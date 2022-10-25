@@ -1,8 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Cryptocop.Software.API.Models.Dtos;
 using Cryptocop.Software.API.Models.InputModels;
 using Cryptocop.Software.API.Repositories.Interfaces;
-
+using Cryptocop.Software.API.Repositories.Contexts;
+using Cryptocop.Software.API.Repositories.Entities;
+using AutoMapper;
 namespace Cryptocop.Software.API.Repositories.Implementations
 {
     public class ShoppingCartRepository : IShoppingCartRepository
