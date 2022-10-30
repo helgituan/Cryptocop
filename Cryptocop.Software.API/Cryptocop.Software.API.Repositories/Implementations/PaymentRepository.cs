@@ -11,14 +11,17 @@ namespace Cryptocop.Software.API.Repositories.Implementations
 {
     public class PaymentRepository : IPaymentRepository
     {
-        private CryptocopDbContext _dbContext
+        private CryptocopDbContext _dbContext;
         private readonly IMapper _mapper;
 
         public void AddPaymentCard(string email, PaymentCardInputModel paymentCard)
         {
+            /*
             _dbContext.Add(paymentCard);
             _dbContext.SaveChanges();
             return _mapper.Map<PaymentCardDto>(paymentCard);
+            */
+            throw new NotImplementedException();
         }
 
         public IEnumerable<PaymentCardDto> GetStoredPaymentCards(string email)

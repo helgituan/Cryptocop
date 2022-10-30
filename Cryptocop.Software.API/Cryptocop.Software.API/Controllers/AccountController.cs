@@ -6,6 +6,6 @@ namespace Cryptocop.Software.API.Controllers
     [ApiController]
     public class AccountController : ControllerBase
     {
-        throw new NotImplementedException();
+        // TODO: Setup routes
     }
 }

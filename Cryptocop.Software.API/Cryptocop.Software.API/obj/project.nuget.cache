@@ -1,12 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "t4nSL3IwwWiVSTjZC+ejyb/NCagT8FBHZAwDzCuyOSDRKR+bOc4Snlt/iuUayInqsm3o3WuGSNWmfaD6yU8ZHw==",
+  "dgSpecHash": "LSUV/ftODswg1aERKBF9/7TbTlK4KU3UF8qyNo1AdP6WPj/SaxCt8f27EqMZBx6akTNCp126rPXUjJJ1lOcvRA==",
   "success": true,
   "projectFilePath": "/Users/helgituan/Documents/Vefthjonustur/FinalAssignment/template 3/Cryptocop.Software.API/Cryptocop.Software.API/Cryptocop.Software.API.csproj",
   "expectedPackageFiles": [
     "/Users/helgituan/.nuget/packages/automapper/12.0.0/automapper.12.0.0.nupkg.sha512",
+    "/Users/helgituan/.nuget/packages/automapper.extensions.microsoft.dependencyinjection/12.0.0/automapper.extensions.microsoft.dependencyinjection.12.0.0.nupkg.sha512",
     "/Users/helgituan/.nuget/packages/humanizer.core/2.8.26/humanizer.core.2.8.26.nupkg.sha512",
-    "/Users/helgituan/.nuget/packages/microsoft.aspnetcore.authentication.jwtbearer/6.0.9/microsoft.aspnetcore.authentication.jwtbearer.6.0.9.nupkg.sha512",
+    "/Users/helgituan/.nuget/packages/microsoft.aspnetcore.authentication.jwtbearer/6.0.10/microsoft.aspnetcore.authentication.jwtbearer.6.0.10.nupkg.sha512",
     "/Users/helgituan/.nuget/packages/microsoft.aspnetcore.cryptography.internal/6.0.9/microsoft.aspnetcore.cryptography.internal.6.0.9.nupkg.sha512",
     "/Users/helgituan/.nuget/packages/microsoft.aspnetcore.cryptography.keyderivation/6.0.9/microsoft.aspnetcore.cryptography.keyderivation.6.0.9.nupkg.sha512",
     "/Users/helgituan/.nuget/packages/microsoft.csharp/4.7.0/microsoft.csharp.4.7.0.nupkg.sha512",

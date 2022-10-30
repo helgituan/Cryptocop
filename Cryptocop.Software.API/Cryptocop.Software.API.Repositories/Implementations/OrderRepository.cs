@@ -11,20 +11,26 @@ namespace Cryptocop.Software.API.Repositories.Implementations
 {
     public class OrderRepository : IOrderRepository
     {
-        private CryptocopDbContext _dbContext
+        private CryptocopDbContext _dbContext;
         private readonly IMapper _mapper;
 
         public IEnumerable<OrderDto> GetOrders(string email)
         {
+            /*
             var orders = _mapper.Map<IEnumerable<OrderDto>>;
             return orders;
+            */
+            throw new NotImplementedException();
         }
 
         public OrderDto CreateNewOrder(string email, OrderInputModel order)
         {
+            /*
             _dbContext.Add(order);
             _dbContext.SaveChanges();
             return _mapper.Map<OrderDto>(order);
+            */
+            throw new NotImplementedException();
         }
     }
 }

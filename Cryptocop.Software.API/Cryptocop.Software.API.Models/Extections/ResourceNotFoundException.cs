@@ -1,5 +1,5 @@
-namespace Cryptocop.Software.API.Models.Exception;
-
+namespace Cryptocop.Software.API.Models.Exceptions;
+using System;
 public class ResourceNotFoundException : Exception
 {
     public ResourceNotFoundException() : base("The resource was not found") { }

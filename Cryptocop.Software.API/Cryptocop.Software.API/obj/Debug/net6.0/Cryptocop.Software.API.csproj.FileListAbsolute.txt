@@ -52,3 +52,5 @@
 /Users/helgituan/Documents/Vefthjonustur/FinalAssignment/template 3/Cryptocop.Software.API/Cryptocop.Software.API/obj/Debug/net6.0/Cryptocop.Software.API.pdb
 /Users/helgituan/Documents/Vefthjonustur/FinalAssignment/template 3/Cryptocop.Software.API/Cryptocop.Software.API/obj/Debug/net6.0/Cryptocop.Software.API.genruntimeconfig.cache
 /Users/helgituan/Documents/Vefthjonustur/FinalAssignment/template 3/Cryptocop.Software.API/Cryptocop.Software.API/obj/Debug/net6.0/ref/Cryptocop.Software.API.dll
+/Users/helgituan/Documents/Vefthjonustur/FinalAssignment/template 3/Cryptocop.Software.API/Cryptocop.Software.API/bin/Debug/net6.0/AutoMapper.dll
+/Users/helgituan/Documents/Vefthjonustur/FinalAssignment/template 3/Cryptocop.Software.API/Cryptocop.Software.API/bin/Debug/net6.0/AutoMapper.Extensions.Microsoft.DependencyInjection.dll

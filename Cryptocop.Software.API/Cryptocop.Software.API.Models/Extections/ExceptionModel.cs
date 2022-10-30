@@ -1,6 +1,6 @@
 using Newtonsoft.Json;
 
-namespace Cryptocop.Software.API.Models.Exception;
+namespace Cryptocop.Software.API.Models.Exceptions;
 
 public class ExceptionModel
 {
