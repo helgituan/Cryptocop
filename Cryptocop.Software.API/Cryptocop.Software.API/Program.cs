@@ -29,7 +29,14 @@ builder.Services.AddTransient<IOrderService, OrderService>();
 builder.Services.AddTransient<IPaymentService, PaymentService>();
 builder.Services.AddTransient<IQueueService, QueueService>();
 builder.Services.AddTransient<IShoppingCartService, ShoppingCartService>();
-builder.Services.AddTransient<ITokenService, TokenService>();
+
+//builder.Services.AddTransient<IManufacturerRepository, ManufacturerRepository>();
+builder.Services.AddTransient<IAddressRepository, AddressRepository>();
+builder.Services.AddTransient<IOrderRepository, OrderRepository>();
+builder.Services.AddTransient<IPaymentRepository, PaymentRepository>();
+builder.Services.AddTransient<IShoppingCartRepository, ShoppingCartRepository>();
+builder.Services.AddTransient<ITokenRepository, TokenRepository>();
+builder.Services.AddTransient<IUserRepository, UserRepository>();
 
 builder.Services.AddAuthentication(config =>
 {

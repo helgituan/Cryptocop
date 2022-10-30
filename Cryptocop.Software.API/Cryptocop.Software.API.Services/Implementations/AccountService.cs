@@ -14,7 +14,8 @@ namespace Cryptocop.Software.API.Services.Implementations
         }
         public UserDto CreateUser(RegisterInputModel inputModel)
         {
-            throw new System.NotImplementedException();
+            //Hash password plox later xdd
+            return _userRepository.CreateUser(inputModel);
         }
 
         public UserDto AuthenticateUser(LoginInputModel loginInputModel)

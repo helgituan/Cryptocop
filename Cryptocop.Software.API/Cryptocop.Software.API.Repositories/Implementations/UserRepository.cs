@@ -25,6 +25,8 @@ namespace Cryptocop.Software.API.Repositories.Implementations
         }
         public UserDto CreateUser(RegisterInputModel inputModel)
         {
+            if (_dbContext.User.Any(u => u.Email == inputModel.Email)) throw new InvalidOperationException();
+
             var user = _mapper.Map<User>(inputModel);
             _dbContext.User.Add(user);
             _dbContext.SaveChanges();
