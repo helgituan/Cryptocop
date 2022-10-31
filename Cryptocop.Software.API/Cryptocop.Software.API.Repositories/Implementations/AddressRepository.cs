@@ -26,8 +26,6 @@ namespace Cryptocop.Software.API.Repositories.Implementations
             user.Addresses.Add(_mapper.Map<Address>(address));
 
             _dbContext.SaveChanges();
-
-
         }
 
         public IEnumerable<AddressDto> GetAllAddresses(string email)

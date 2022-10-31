@@ -21,13 +21,15 @@ namespace Cryptocop.Software.API.Controllers
         [Route("")]
         public IActionResult GetCartItems()
         {
-            throw new NotImplementedException();
+            return Ok(_shoppingCartService.GetCartItems());
         }
 
         [HttpPost]
         [Route("")]
         public IActionResult AddCartItem([FromBody] ShoppingCartItemInputModel inputModel)
         {
+            var id = _shoppingCartService.AddCartItem(inputModel);
+            //call the external api using thye product identifier as an url parameter
             throw new NotImplementedException();
         }
 
@@ -35,21 +37,24 @@ namespace Cryptocop.Software.API.Controllers
         [Route("/{Id}")]
         public IActionResult RemoveCartItem([FromBody] ShoppingCartItemInputModel inputModel)
         {
-            throw new NotImplementedException();
+            _shoppingCartService.RemoveCartItem(inputModel);
+            return NoContent();
         }
 
         [HttpPatch]
         [Route("/{Id}")]
         public IActionResult UpdateCartItemQuantity([FromBody] ShoppingCartItemInputModel inputModel)
         {
-            throw new NotImplementedException();
+            _shoppingCartService.UpdateCartItemQuantity(inputModel);
+            return NoContent();
         }
 
         [HttpDelete]
         [Route("")]
         public IActionResult ClearCart()
         {
-            throw new NotImplementedException();
+            _shoppingCartService.ClearCart();
+            return NoContent();
         }
 
     }

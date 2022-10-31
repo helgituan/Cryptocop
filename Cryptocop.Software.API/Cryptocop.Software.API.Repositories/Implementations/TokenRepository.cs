@@ -1,10 +1,19 @@
 ﻿using Cryptocop.Software.API.Models.Dtos;
 using Cryptocop.Software.API.Repositories.Interfaces;
+using Cryptocop.Software.API.Repositories.Entities;
 
 namespace Cryptocop.Software.API.Repositories.Implementations
 {
     public class TokenRepository : ITokenRepository
     {
+        private CryptocopDbContext _dbContext;
+        private readonly IMapper _mapper;
+
+        public TokenRepository(CryptocopDbContext dbContext, IMapper mapper)
+        {
+            _mapper = mapper;
+            _dbContext = dbContext;
+        }
         public JwtTokenDto CreateNewToken()
         {
             throw new System.NotImplementedException();
@@ -12,7 +21,9 @@ namespace Cryptocop.Software.API.Repositories.Implementations
 
         public bool IsTokenBlacklisted(int tokenId)
         {
-            throw new System.NotImplementedException();
+            var token = _dbContext.JwtTokens.FirstOrDefault(t => t.Id == tokenId);
+            if (token == null) {return true;}
+            return token.Blacklisted;
         }
 
         public void VoidToken(int tokenId)

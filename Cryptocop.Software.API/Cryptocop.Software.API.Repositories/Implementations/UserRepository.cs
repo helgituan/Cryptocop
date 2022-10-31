@@ -19,6 +19,7 @@ namespace Cryptocop.Software.API.Repositories.Implementations
     {
         private readonly CryptocopDbContext _dbContext;
         private readonly IMapper _mapper;
+        private string _salt = "00209b47-08d7-475d-a0fb-20abf0872ba0";
         public UserRepository(CryptocopDbContext dbContext, IMapper mapper)
         {
             _dbContext = dbContext;
@@ -26,7 +27,7 @@ namespace Cryptocop.Software.API.Repositories.Implementations
         }
         public UserDto CreateUser(RegisterInputModel inputModel)
         {
-            if (_dbContext.User.Any(u => u.Email == inputModel.Email)) throw new InvalidOperationException();
+            if (_dbContext.User.Any(u => u.Email == inputModel.Email)) throw new NotImplementedException();
 
             var user = _mapper.Map<User>(inputModel);
             user.HashedPassword = HashingHelper.HashPassword(inputModel.Password);
@@ -44,6 +45,14 @@ namespace Cryptocop.Software.API.Repositories.Implementations
 
         public UserDto AuthenticateUser(LoginInputModel loginInputModel)
         {
+            var hashpw = user.HashedPassword = HashingHelper.HashPassword(inputModel.Password);
+            var user = _dbContext.User.FirstOrDefault(u => u.Email == loginInputModel.Email && u.HashedPassword == hashpw);
+
+            var token = new JwtToken();
+            _dbContext.JwtToken.Add(token);
+            _dbContext.SaveChanges();
+            
+            // TODO: óklárað er ekki viss hverju á að skila ? userdto ?
             throw new NotImplementedException();
         }
     }

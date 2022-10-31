@@ -8,7 +8,7 @@ namespace Cryptocop.Software.API.Controllers
     [ApiController]
     public class AddressController : ControllerBase
     {
-        private IAddressService _addressService;
+        private readonly IAddressService _addressService;
         public AddressController(IAddressService addressService)
         {
             _addressService = addressService;
@@ -20,6 +20,7 @@ namespace Cryptocop.Software.API.Controllers
         {
             //öruglega email => thingy
             return Ok(_addressService.GetAllAddresses(email));
+            
         }
 
         [HttpPost]
