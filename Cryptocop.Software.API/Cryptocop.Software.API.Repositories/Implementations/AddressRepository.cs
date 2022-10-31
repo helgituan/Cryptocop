@@ -24,7 +24,6 @@ namespace Cryptocop.Software.API.Repositories.Implementations
         {
             var user = _dbContext.User.FirstOrDefault(u => u.Email == email);
             user.Addresses.Add(_mapper.Map<Address>(address));
-            // var address = _dbContext.Address.FirstOrDefault(address => address.Email == email);
 
             _dbContext.SaveChanges();
 
@@ -33,26 +32,16 @@ namespace Cryptocop.Software.API.Repositories.Implementations
 
         public IEnumerable<AddressDto> GetAllAddresses(string email)
         {
-            throw new NotImplementedException();
-            /*
-            var addresses = _mapper.Map<IEnumerable<AddressDto>>(_dbContext.Addresses);
-            return addresses;
-            */
+            return _dbContext.Address.Select(address => _mapper.Map<AddressDto>(address)).AsEnumerable();
         }
 
 
         // TODO: Fixxxx this
         public void DeleteAddress(string email, int addressId)
         {
-            throw new NotImplementedException();
-            /*
-            var address = _dbContext.Addresses.Where(x => x.address).FirstOrDefault(a => p.addressId == addressId);
-            if (address == null)
-                throw new ExecutionError($"Address with id '{addressId}' was not found");
-            //Delete Address
+            var address = _dbContext.Address.FirstOrDefault(a => a.Id == addressId);
+            _dbContext.Address.Remove(address);
             _dbContext.SaveChanges();
-            return address;
-            */
         }
     }
 }

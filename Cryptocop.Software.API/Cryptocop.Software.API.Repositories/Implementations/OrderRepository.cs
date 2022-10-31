@@ -13,24 +13,24 @@ namespace Cryptocop.Software.API.Repositories.Implementations
     {
         private CryptocopDbContext _dbContext;
         private readonly IMapper _mapper;
-
+        public OrderRepository(CryptocopDbContext dbContext, IMapper mapper)
+        {
+            _mapper = mapper;
+            _dbContext = dbContext;
+        }
         public IEnumerable<OrderDto> GetOrders(string email)
         {
-            /*
-            var orders = _mapper.Map<IEnumerable<OrderDto>>;
+            var orders = _mapper.Map<IEnumerable<OrderDto>>(_dbContext.Order);
             return orders;
-            */
-            throw new NotImplementedException();
         }
 
         public OrderDto CreateNewOrder(string email, OrderInputModel order)
         {
-            /*
+
             _dbContext.Add(order);
             _dbContext.SaveChanges();
             return _mapper.Map<OrderDto>(order);
-            */
-            throw new NotImplementedException();
+
         }
     }
 }

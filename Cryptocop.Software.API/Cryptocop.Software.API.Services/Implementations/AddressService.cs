@@ -15,18 +15,12 @@ namespace Cryptocop.Software.API.Services.Implementations
             _addressRepository = addressRepository;
         }
         public void AddAddress(string email, AddressInputModel address)
-        {
-            _addressRepository.AddAddress(email, address);
-        }
+            => _addressRepository.AddAddress(email, address);
 
         public IEnumerable<AddressDto> GetAllAddresses(string email)
-        {
-            throw new System.NotImplementedException();
-        }
+            => _addressRepository.GetAllAddresses(email);
 
         public void DeleteAddress(string email, int addressId)
-        {
-            throw new System.NotImplementedException();
-        }
+            => _addressRepository.DeleteAddress(email, addressId);
     }
 }

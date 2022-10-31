@@ -16,9 +16,10 @@ namespace Cryptocop.Software.API.Controllers
 
         [HttpGet]
         [Route("api/addresses")]
-        public IActionResult GetAllAddresses()
+        public IActionResult GetAllAddresses(string email)
         {
-            throw new NotImplementedException();
+            //öruglega email => thingy
+            return Ok(_addressService.GetAllAddresses(email));
         }
 
         [HttpPost]
@@ -30,11 +31,10 @@ namespace Cryptocop.Software.API.Controllers
         }
         [HttpDelete]
         [Route("/{Id}")]
-        public IActionResult DeleteAddress()
+        public IActionResult DeleteAddress(string email, int addressId)
         {
-            throw new NotImplementedException();
+            _addressService.DeleteAddress(email, addressId);
+            return NoContent();
         }
-
-
     }
 }
