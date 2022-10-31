@@ -11,6 +11,6 @@ namespace Cryptocop.Software.API.Repositories.Interfaces
         void RemoveCartItem(string email, int id);
         void UpdateCartItemQuantity(string email, int id, float quantity);
         void ClearCart(string email);
-        void DeleteCart(string email);
+        void DeleteCart(string email); //ekki notað ?
     }
 }

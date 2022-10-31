@@ -10,6 +10,7 @@ using Cryptocop.Software.API.Repositories.Interfaces;
 using Cryptocop.Software.API.Repositories.Contexts;
 using Cryptocop.Software.API.Repositories.Entities;
 using AutoMapper;
+using Cryptocop.Software.API.Repositories.Helpers;
 
 namespace Cryptocop.Software.API.Repositories.Implementations
 {
@@ -28,6 +29,7 @@ namespace Cryptocop.Software.API.Repositories.Implementations
             if (_dbContext.User.Any(u => u.Email == inputModel.Email)) throw new InvalidOperationException();
 
             var user = _mapper.Map<User>(inputModel);
+            user.HashedPassword = HashingHelper.HashPassword(inputModel.Password);
             _dbContext.User.Add(user);
             _dbContext.SaveChanges();
             return new UserDto
@@ -35,6 +37,7 @@ namespace Cryptocop.Software.API.Repositories.Implementations
                 Id = user.Id,
                 FullName = user.FullName,
                 Email = user.Email
+
                 // Hvað á ég að gera við TokenId ?
             };
         }

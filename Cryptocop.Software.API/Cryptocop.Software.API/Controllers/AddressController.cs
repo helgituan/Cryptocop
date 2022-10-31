@@ -13,14 +13,14 @@ namespace Cryptocop.Software.API.Controllers
         {
             _addressService = addressService;
         }
-        /*
+
         [HttpGet]
         [Route("api/addresses")]
         public IActionResult GetAllAddresses()
         {
-            return Ok(_addressService.GetAllAddresses);
+            throw new NotImplementedException();
         }
-        */
+
         [HttpPost]
         [Route("")]
         public IActionResult AddAddress([FromBody] AddressInputModel inputModel)
@@ -28,5 +28,13 @@ namespace Cryptocop.Software.API.Controllers
             _addressService.AddAddress("", inputModel);
             return Ok();
         }
+        [HttpDelete]
+        [Route("/{Id}")]
+        public IActionResult DeleteAddress()
+        {
+            throw new NotImplementedException();
+        }
+
+
     }
 }
