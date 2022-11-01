@@ -2,15 +2,18 @@
 using Cryptocop.Software.API.Models.InputModels;
 using Cryptocop.Software.API.Services.Interfaces;
 using Cryptocop.Software.API.Repositories.Interfaces;
+using System;
 
 namespace Cryptocop.Software.API.Services.Implementations
 {
     public class AccountService : IAccountService
     {
         private readonly IUserRepository _userRepository;
-        public AccountService(IUserRepository userRepository)
+        private readonly ITokenRepository _tokenRepository;
+        public AccountService(IUserRepository userRepository, ITokenRepository tokenRepository)
         {
             _userRepository = userRepository;
+            _tokenRepository = tokenRepository;
         }
         public UserDto CreateUser(RegisterInputModel inputModel)
         {
@@ -24,7 +27,8 @@ namespace Cryptocop.Software.API.Services.Implementations
 
         public void Logout(int tokenId)
         {
-            return _userRepository.Logout(tokenId);
+            //return _tokenRepository.VoidToken(tokenId);
+            throw new NotImplementedException();
         }
     }
 }

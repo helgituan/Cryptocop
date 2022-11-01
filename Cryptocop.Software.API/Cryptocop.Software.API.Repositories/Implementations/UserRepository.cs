@@ -45,13 +45,12 @@ namespace Cryptocop.Software.API.Repositories.Implementations
 
         public UserDto AuthenticateUser(LoginInputModel loginInputModel)
         {
-            var hashpw = user.HashedPassword = HashingHelper.HashPassword(inputModel.Password);
-            var user = _dbContext.User.FirstOrDefault(u => u.Email == loginInputModel.Email && u.HashedPassword == hashpw);
+            var user = _dbContext.User.FirstOrDefault(u => u.Email == loginInputModel.Email); //&& u.HashedPassword == HashPassword(loginInputModel.Password));
 
             var token = new JwtToken();
-            _dbContext.JwtToken.Add(token);
+            _dbContext.JwtTokens.Add(token);
             _dbContext.SaveChanges();
-            
+
             // TODO: óklárað er ekki viss hverju á að skila ? userdto ?
             throw new NotImplementedException();
         }

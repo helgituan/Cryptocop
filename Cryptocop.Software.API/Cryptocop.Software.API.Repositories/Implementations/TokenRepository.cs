@@ -1,6 +1,9 @@
 ﻿using Cryptocop.Software.API.Models.Dtos;
 using Cryptocop.Software.API.Repositories.Interfaces;
 using Cryptocop.Software.API.Repositories.Entities;
+using Cryptocop.Software.API.Repositories.Contexts;
+using AutoMapper;
+using System.Linq;
 
 namespace Cryptocop.Software.API.Repositories.Implementations
 {
@@ -22,7 +25,7 @@ namespace Cryptocop.Software.API.Repositories.Implementations
         public bool IsTokenBlacklisted(int tokenId)
         {
             var token = _dbContext.JwtTokens.FirstOrDefault(t => t.Id == tokenId);
-            if (token == null) {return true;}
+            if (token == null) { return true; }
             return token.Blacklisted;
         }
 
