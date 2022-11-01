@@ -4,6 +4,7 @@ using Cryptocop.Software.API.Models.InputModels;
 using Cryptocop.Software.API.Repositories.Interfaces;
 using Cryptocop.Software.API.Repositories.Entities;
 using Cryptocop.Software.API.Repositories.Contexts;
+using System.Collections.Generic;
 using AutoMapper;
 using System.Linq;
 using System;
@@ -11,7 +12,7 @@ namespace Cryptocop.Software.API.Repositories.Implementations
 {
     public class ShoppingCartRepository : IShoppingCartRepository
     {
-        private CryptocopDbContext _dbContext;
+        private readonly CryptocopDbContext _dbContext;
         private readonly IMapper _mapper;
         public ShoppingCartRepository(CryptocopDbContext dbContext, IMapper mapper)
         {
@@ -20,7 +21,7 @@ namespace Cryptocop.Software.API.Repositories.Implementations
         }
         public IEnumerable<ShoppingCartItemDto> GetCartItems(string email)
         {
-            throw new System.NotImplementedException();
+            return _dbContext.ShoppingCartItem.Select(s => _mapper.Map<ShoppingCartItemDto>).AsEnumerable();
         }
 
         public void AddCartItem(string email, ShoppingCartItemInputModel shoppingCartItemItem, float priceInUsd)

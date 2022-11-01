@@ -9,7 +9,7 @@ namespace Cryptocop.Software.API.Repositories.Implementations
 {
     public class TokenRepository : ITokenRepository
     {
-        private CryptocopDbContext _dbContext;
+        private readonly CryptocopDbContext _dbContext;
         private readonly IMapper _mapper;
 
         public TokenRepository(CryptocopDbContext dbContext, IMapper mapper)

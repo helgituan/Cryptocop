@@ -1,12 +1,18 @@
-﻿using Cryptocop.Software.API.Services.Interfaces;
+﻿using Cryptocop.Software.API.Models.Dtos;
+using Cryptocop.Software.API.Models.InputModels;
+using Cryptocop.Software.API.Services.Interfaces;
+using Cryptocop.Software.API.Repositories.Interfaces;
+using System;
 
 namespace Cryptocop.Software.API.Services.Implementations
 {
     public class JwtTokenService : IJwtTokenService
     {
+        private readonly IUserRepository _userRepository;
+        private readonly ITokenRepository _tokenRepository;
         public bool IsTokenBlacklisted(int tokenId)
         {
-            throw new System.NotImplementedException();
+            return _tokenRepository.IsTokenBlacklisted(tokenId);
         }
     }
 }

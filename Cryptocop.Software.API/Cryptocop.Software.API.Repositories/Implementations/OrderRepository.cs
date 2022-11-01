@@ -11,7 +11,7 @@ namespace Cryptocop.Software.API.Repositories.Implementations
 {
     public class OrderRepository : IOrderRepository
     {
-        private CryptocopDbContext _dbContext;
+        private readonly CryptocopDbContext _dbContext;
         private readonly IMapper _mapper;
         public OrderRepository(CryptocopDbContext dbContext, IMapper mapper)
         {

@@ -11,7 +11,7 @@ namespace Cryptocop.Software.API.Repositories.Implementations
 {
     public class PaymentRepository : IPaymentRepository
     {
-        private CryptocopDbContext _dbContext;
+        private readonly CryptocopDbContext _dbContext;
         private readonly IMapper _mapper;
 
         public void AddPaymentCard(string email, PaymentCardInputModel paymentCard)
