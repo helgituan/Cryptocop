@@ -11,6 +11,7 @@ using Cryptocop.Software.API.Repositories.Contexts;
 using Cryptocop.Software.API.Repositories.Entities;
 using AutoMapper;
 using Cryptocop.Software.API.Repositories.Helpers;
+using Cryptocop.Software.API.Models.Exceptions;
 
 namespace Cryptocop.Software.API.Repositories.Implementations
 {
@@ -27,12 +28,21 @@ namespace Cryptocop.Software.API.Repositories.Implementations
         }
         public UserDto CreateUser(RegisterInputModel inputModel)
         {
-            if (_dbContext.User.Any(u => u.Email == inputModel.Email)) throw new NotImplementedException();
+            if (_dbContext.User.Any(u => u.Email == inputModel.Email)) throw new EmailAlreadyExistsException();
 
             var user = _mapper.Map<User>(inputModel);
             user.HashedPassword = HashingHelper.HashPassword(inputModel.Password);
             _dbContext.User.Add(user);
             _dbContext.SaveChanges();
+
+            var shoppingCart = new ShoppingCart
+            {
+                User = user
+            };
+
+            _dbContext.ShoppingCart.Add(shoppingCart);
+            _dbContext.SaveChanges();
+
             return new UserDto
             {
                 Id = user.Id,
@@ -45,14 +55,17 @@ namespace Cryptocop.Software.API.Repositories.Implementations
 
         public UserDto AuthenticateUser(LoginInputModel loginInputModel)
         {
-            var user = _dbContext.User.FirstOrDefault(u => u.Email == loginInputModel.Email); //&& u.HashedPassword == HashPassword(loginInputModel.Password));
+            var user = _dbContext.User.FirstOrDefault(u => u.Email == loginInputModel.Email && u.HashedPassword == HashingHelper.HashPassword(loginInputModel.Password)); //&& u.HashedPassword == HashPassword(loginInputModel.Password));
+            if (user == null) return null;
 
             var token = new JwtToken();
             _dbContext.JwtTokens.Add(token);
             _dbContext.SaveChanges();
 
-            // TODO: óklárað er ekki viss hverju á að skila ? userdto ?
-            throw new NotImplementedException();
+            var returnUser = _mapper.Map<UserDto>(user);
+            returnUser.TokenId = token.Id;
+
+            return returnUser;
         }
     }
 }

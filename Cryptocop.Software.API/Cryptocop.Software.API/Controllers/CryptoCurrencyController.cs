@@ -19,9 +19,10 @@ namespace Cryptocop.Software.API.Controllers
 
         [HttpGet]
         [Route("")]
-        public IActionResult GetAvailableCryptocurrencies()
+        public async Task<IActionResult> GetAvailableCryptocurrencies()
         {
-            throw new NotImplementedException();
+            var cryptocurrencies = await _cryptoCurrencyService.GetAvailableCryptocurrencies();
+            return Ok(cryptocurrencies);
         }
     }
 }

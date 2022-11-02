@@ -15,3 +15,20 @@
 /Users/helgituan/Documents/Vefthjonustur/FinalAssignment/template 3/Cryptocop.Software.API/Cryptocop.Software.API.Services/obj/Debug/net6.0/refint/Cryptocop.Software.API.Services.dll
 /Users/helgituan/Documents/Vefthjonustur/FinalAssignment/template 3/Cryptocop.Software.API/Cryptocop.Software.API.Services/obj/Debug/net6.0/Cryptocop.Software.API.Services.pdb
 /Users/helgituan/Documents/Vefthjonustur/FinalAssignment/template 3/Cryptocop.Software.API/Cryptocop.Software.API.Services/obj/Debug/net6.0/ref/Cryptocop.Software.API.Services.dll
+/Users/petur.steinn/Skoli/HR/Vefþjónustur/T-514-VEFT/HelgiHjalp/Cryptocop/Cryptocop.Software.API/Cryptocop.Software.API.Services/obj/Debug/net6.0/Cryptocop.Software.API.Services.dll
+/Users/petur.steinn/Skoli/HR/Vefþjónustur/T-514-VEFT/HelgiHjalp/Cryptocop/Cryptocop.Software.API/Cryptocop.Software.API.Services/obj/Debug/net6.0/ref/Cryptocop.Software.API.Services.dll
+/Users/petur.steinn/Skoli/HR/Vefþjónustur/T-514-VEFT/HelgiHjalp/Cryptocop/Cryptocop.Software.API/Cryptocop.Software.API.Services/obj/Debug/net6.0/Cryptocop.Software.API.Services.pdb
+/Users/petur.steinn/Skoli/HR/Vefþjónustur/T-514-VEFT/HelgiHjalp/Cryptocop/Cryptocop.Software.API/Cryptocop.Software.API.Services/bin/Debug/net6.0/Cryptocop.Software.API.Services.deps.json
+/Users/petur.steinn/Skoli/HR/Vefþjónustur/T-514-VEFT/HelgiHjalp/Cryptocop/Cryptocop.Software.API/Cryptocop.Software.API.Services/bin/Debug/net6.0/Cryptocop.Software.API.Services.dll
+/Users/petur.steinn/Skoli/HR/Vefþjónustur/T-514-VEFT/HelgiHjalp/Cryptocop/Cryptocop.Software.API/Cryptocop.Software.API.Services/bin/Debug/net6.0/ref/Cryptocop.Software.API.Services.dll
+/Users/petur.steinn/Skoli/HR/Vefþjónustur/T-514-VEFT/HelgiHjalp/Cryptocop/Cryptocop.Software.API/Cryptocop.Software.API.Services/bin/Debug/net6.0/Cryptocop.Software.API.Services.pdb
+/Users/petur.steinn/Skoli/HR/Vefþjónustur/T-514-VEFT/HelgiHjalp/Cryptocop/Cryptocop.Software.API/Cryptocop.Software.API.Services/bin/Debug/net6.0/Cryptocop.Software.API.Models.dll
+/Users/petur.steinn/Skoli/HR/Vefþjónustur/T-514-VEFT/HelgiHjalp/Cryptocop/Cryptocop.Software.API/Cryptocop.Software.API.Services/bin/Debug/net6.0/Cryptocop.Software.API.Repositories.dll
+/Users/petur.steinn/Skoli/HR/Vefþjónustur/T-514-VEFT/HelgiHjalp/Cryptocop/Cryptocop.Software.API/Cryptocop.Software.API.Services/bin/Debug/net6.0/Cryptocop.Software.API.Models.pdb
+/Users/petur.steinn/Skoli/HR/Vefþjónustur/T-514-VEFT/HelgiHjalp/Cryptocop/Cryptocop.Software.API/Cryptocop.Software.API.Services/bin/Debug/net6.0/Cryptocop.Software.API.Repositories.pdb
+/Users/petur.steinn/Skoli/HR/Vefþjónustur/T-514-VEFT/HelgiHjalp/Cryptocop/Cryptocop.Software.API/Cryptocop.Software.API.Services/obj/Debug/net6.0/Cryptocop.Software.API.Services.csproj.AssemblyReference.cache
+/Users/petur.steinn/Skoli/HR/Vefþjónustur/T-514-VEFT/HelgiHjalp/Cryptocop/Cryptocop.Software.API/Cryptocop.Software.API.Services/obj/Debug/net6.0/Cryptocop.Software.API.Services.GeneratedMSBuildEditorConfig.editorconfig
+/Users/petur.steinn/Skoli/HR/Vefþjónustur/T-514-VEFT/HelgiHjalp/Cryptocop/Cryptocop.Software.API/Cryptocop.Software.API.Services/obj/Debug/net6.0/Cryptocop.Software.API.Services.AssemblyInfoInputs.cache
+/Users/petur.steinn/Skoli/HR/Vefþjónustur/T-514-VEFT/HelgiHjalp/Cryptocop/Cryptocop.Software.API/Cryptocop.Software.API.Services/obj/Debug/net6.0/Cryptocop.Software.API.Services.AssemblyInfo.cs
+/Users/petur.steinn/Skoli/HR/Vefþjónustur/T-514-VEFT/HelgiHjalp/Cryptocop/Cryptocop.Software.API/Cryptocop.Software.API.Services/obj/Debug/net6.0/Cryptocop.Software.API.Services.csproj.CoreCompileInputs.cache
+/Users/petur.steinn/Skoli/HR/Vefþjónustur/T-514-VEFT/HelgiHjalp/Cryptocop/Cryptocop.Software.API/Cryptocop.Software.API.Services/obj/Debug/net6.0/Cryptocop.Software.API.Services.csproj.CopyComplete

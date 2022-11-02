@@ -4,8 +4,9 @@ namespace Cryptocop.Software.API.Models.InputModels
     public class RegisterInputModel
     {
 
-        [RegularExpression(@"^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$", ErrorMessage = "Your Email is not valid.")]
+        // [RegularExpression(@"^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$", ErrorMessage = "Your Email is not valid.")]
         [Required]
+        [EmailAddress]
         public string Email { get; set; }
 
         [Required]
@@ -14,12 +15,11 @@ namespace Cryptocop.Software.API.Models.InputModels
 
         [Required]
         [MinLength(8)]
-        [DataType(DataType.Password)]
         public string Password { get; set; }
+
         [Required]
         [MinLength(8)]
-        [DataType(DataType.Password)]
-        [Compare("Password")]
+        [Compare("Password", ErrorMessage = "Password does not match")]
         public string PasswordConfirmation { get; set; }
 
     }

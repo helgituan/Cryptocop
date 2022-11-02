@@ -31,7 +31,10 @@ namespace Cryptocop.Software.API.Repositories.Implementations
 
         public void VoidToken(int tokenId)
         {
-            throw new System.NotImplementedException();
+            var token = _dbContext.JwtTokens.FirstOrDefault(t => t.Id == tokenId);
+            if (token == null) { return; }
+            token.Blacklisted = true;
+            _dbContext.SaveChanges();
         }
     }
 }

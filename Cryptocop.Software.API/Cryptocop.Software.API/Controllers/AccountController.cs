@@ -5,8 +5,10 @@ using Cryptocop.Software.API.Models.InputModels;
 using Cryptocop.Software.API.Services.Interfaces;
 namespace Cryptocop.Software.API.Controllers
 {
+    [Authorize]
     [Route("api/account")]
     [ApiController]
+
     public class AccountController : ControllerBase
     {
         private readonly IAccountService _accountService;
@@ -16,17 +18,21 @@ namespace Cryptocop.Software.API.Controllers
             _accountService = accountService;
             _tokenService = tokenService;
         }
+        [AllowAnonymous]
         [HttpPost]
         [Route("register")]
         public IActionResult CreateUser([FromBody] RegisterInputModel inputModel)
         {
             var user = _accountService.CreateUser(inputModel);
-            return Ok(_tokenService.GenerateJwtToken(user));
+            return StatusCode(201);
+            //return Ok(_tokenService.GenerateJwtToken(user));
             //new StatusCodeResult(201);
         }
 
+        [AllowAnonymous]
         [HttpPost]
         [Route("signin")]
+
         public IActionResult AuthenticateUser([FromBody] LoginInputModel inputModel)
         {
             var user = _accountService.AuthenticateUser(inputModel);
@@ -40,7 +46,7 @@ namespace Cryptocop.Software.API.Controllers
         {
             int.TryParse(User.Claims.FirstOrDefault(c => c.Type == "tokenId").Value, out var tokenId);
             _accountService.Logout(tokenId);
-            return NoContent();
+            return new EmptyResult();
         }
 
     }

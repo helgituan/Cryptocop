@@ -7,7 +7,8 @@ namespace Cryptocop.Software.API.Models.InputModels
         [MinLength(3)]
         public string CardholderName { get; set; }
         [Required]
-        [RegularExpression(@"^[0-9]{4}-[0-9]{4}-[0-9]{4}-[0-9]{4}$", ErrorMessage = "Card Number isn't valid.")]
+        //[RegularExpression(@"^[0-9]{4}-[0-9]{4}-[0-9]{4}-[0-9]{4}$", ErrorMessage = "Card Number isn't valid.")]
+        [CreditCard]
         public string CardNumber { get; set; }
         [Required]
         [Range(0, 12)]

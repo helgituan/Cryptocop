@@ -11,5 +11,6 @@ public class ShoppingCartItemProfile : Profile
     {
         CreateMap<ShoppingCartItem, ShoppingCartItemDto>();
         CreateMap<ShoppingCartItemInputModel, ShoppingCartItem>();
+        CreateMap<ShoppingCartItem, OrderItem>();
     }
 }

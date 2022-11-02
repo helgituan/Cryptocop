@@ -5,4 +5,5 @@ public class ShoppingCartItem
     public string ProductIdentifier { get; set; }
     public float Quantity { get; set; }
     public float UnitPrice { get; set; }
+    public ShoppingCart ShoppingCart { get; set; }
 }

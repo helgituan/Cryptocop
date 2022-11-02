@@ -1,20 +1,22 @@
 ﻿using System.Collections.Generic;
 using Cryptocop.Software.API.Models.Dtos;
 using Cryptocop.Software.API.Models.InputModels;
+using Cryptocop.Software.API.Repositories.Interfaces;
 using Cryptocop.Software.API.Services.Interfaces;
 
 namespace Cryptocop.Software.API.Services.Implementations
 {
     public class PaymentService : IPaymentService
     {
-        public void AddPaymentCard(string email, PaymentCardInputModel paymentCard)
+        private readonly IPaymentRepository _paymentRepository;
+
+        public PaymentService(IPaymentRepository paymentRepository)
         {
-            throw new System.NotImplementedException();
+            _paymentRepository = paymentRepository;
         }
 
-        public IEnumerable<PaymentCardDto> GetStoredPaymentCards(string email)
-        {
-            throw new System.NotImplementedException();
-        }
+        public void AddPaymentCard(string email, PaymentCardInputModel paymentCard) => _paymentRepository.AddPaymentCard(email, paymentCard);
+
+        public IEnumerable<PaymentCardDto> GetStoredPaymentCards(string email) => _paymentRepository.GetStoredPaymentCards(email);
     }
 }

@@ -11,7 +11,8 @@ namespace Cryptocop.Software.API.Models.InputModels
             •A minimum length of 8 characters
          */
         [Required]
-        [RegularExpression(@"^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$", ErrorMessage = "Your Email is not valid.")]
+        //[RegularExpression(@"^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$", ErrorMessage = "Your Email is not valid.")]
+        [EmailAddress]
         public string Email { get; set; }
 
         [Required]

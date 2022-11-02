@@ -10,8 +10,11 @@ using System.Reflection;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Cryptocop.Software.API.Middlewares;
+using Cryptocop.Software.API.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
+
+AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
 
 
 builder.Services.AddDbContext<CryptocopDbContext>(options =>
@@ -23,7 +26,15 @@ builder.Services.AddDbContext<CryptocopDbContext>(options =>
 builder.Services.AddTransient<IAccountService, AccountService>();
 builder.Services.AddTransient<IAddressService, AddressService>();
 builder.Services.AddTransient<ICryptoCurrencyService, CryptoCurrencyService>();
+builder.Services.AddHttpClient<ICryptoCurrencyService, CryptoCurrencyService>(client =>
+{
+    client.BaseAddress = new Uri(builder.Configuration.GetValue<string>("ApiBaseUrl"));
+});
 builder.Services.AddTransient<IExchangeService, ExchangeService>();
+builder.Services.AddHttpClient<IExchangeService, ExchangeService>(client =>
+{
+    client.BaseAddress = new Uri(builder.Configuration.GetValue<string>("ApiBaseUrl"));
+});
 builder.Services.AddTransient<IJwtTokenService, JwtTokenService>();
 builder.Services.AddTransient<IOrderService, OrderService>();
 builder.Services.AddTransient<IPaymentService, PaymentService>();
@@ -55,7 +66,7 @@ builder.Services.AddTransient<ITokenService>((c) =>
 builder.Services.AddScoped<IQueueService, QueueService>();
 builder.Services.Configure<ApiBehaviorOptions>(options =>
 {
-    options.SuppressModelStateInvalidFilter = true;
+    options.SuppressModelStateInvalidFilter = false;
 });
 builder.Services.AddControllers().AddJsonOptions(options =>
 {
@@ -78,8 +89,10 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.ConfigureExceptionHandler();
 app.UseHttpsRedirection();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();

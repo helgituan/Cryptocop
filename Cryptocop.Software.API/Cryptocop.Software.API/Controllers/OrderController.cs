@@ -7,6 +7,7 @@ namespace Cryptocop.Software.API.Controllers
 {
     [Route("api/orders")]
     [ApiController]
+    [Authorize]
     public class OrderController : ControllerBase
     {
         private readonly IOrderService _orderService;
@@ -14,13 +15,21 @@ namespace Cryptocop.Software.API.Controllers
         {
             _orderService = orderService;
         }
+
+        [HttpGet]
+        [Route("")]
         public IActionResult GetOrders()
         {
-            throw new NotImplementedException();
+            var orders = _orderService.GetOrders(User.Identity.Name);
+            return Ok(orders);
         }
-        public IActionResult CreateNewOrder()
+
+        [HttpPost]
+        [Route("")]
+        public IActionResult CreateNewOrder([FromBody] OrderInputModel inputModel)
         {
-            throw new NotImplementedException();
+            _orderService.CreateNewOrder(User.Identity.Name, inputModel);
+            return StatusCode(201);
         }
     }
 }

@@ -55,6 +55,22 @@ namespace Cryptocop.Software.API.Migrations
                     b.ToTable("Address");
                 });
 
+            modelBuilder.Entity("Cryptocop.Software.API.Repositories.Entities.JwtToken", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<bool>("Blacklisted")
+                        .HasColumnType("boolean");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("JwtTokens");
+                });
+
             modelBuilder.Entity("Cryptocop.Software.API.Repositories.Entities.Order", b =>
                 {
                     b.Property<int>("Id")
@@ -171,12 +187,13 @@ namespace Cryptocop.Software.API.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<int?>("UserId")
+                    b.Property<int>("UserId")
                         .HasColumnType("integer");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex("UserId")
+                        .IsUnique();
 
                     b.ToTable("ShoppingCart");
                 });
@@ -261,17 +278,21 @@ namespace Cryptocop.Software.API.Migrations
             modelBuilder.Entity("Cryptocop.Software.API.Repositories.Entities.ShoppingCart", b =>
                 {
                     b.HasOne("Cryptocop.Software.API.Repositories.Entities.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId");
+                        .WithOne("ShoppingCart")
+                        .HasForeignKey("Cryptocop.Software.API.Repositories.Entities.ShoppingCart", "UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("User");
                 });
 
             modelBuilder.Entity("Cryptocop.Software.API.Repositories.Entities.ShoppingCartItem", b =>
                 {
-                    b.HasOne("Cryptocop.Software.API.Repositories.Entities.ShoppingCart", null)
+                    b.HasOne("Cryptocop.Software.API.Repositories.Entities.ShoppingCart", "ShoppingCart")
                         .WithMany("Items")
                         .HasForeignKey("ShoppingCartId");
+
+                    b.Navigation("ShoppingCart");
                 });
 
             modelBuilder.Entity("Cryptocop.Software.API.Repositories.Entities.Order", b =>
@@ -291,6 +312,8 @@ namespace Cryptocop.Software.API.Migrations
                     b.Navigation("Orders");
 
                     b.Navigation("PaymentCards");
+
+                    b.Navigation("ShoppingCart");
                 });
 #pragma warning restore 612, 618
         }

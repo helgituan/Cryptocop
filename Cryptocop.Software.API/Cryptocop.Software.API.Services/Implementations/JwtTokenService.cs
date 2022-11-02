@@ -10,6 +10,12 @@ namespace Cryptocop.Software.API.Services.Implementations
     {
         private readonly IUserRepository _userRepository;
         private readonly ITokenRepository _tokenRepository;
+
+        public JwtTokenService(ITokenRepository tokenRepository)
+        {
+            _tokenRepository = tokenRepository;
+        }
+
         public bool IsTokenBlacklisted(int tokenId)
         {
             return _tokenRepository.IsTokenBlacklisted(tokenId);

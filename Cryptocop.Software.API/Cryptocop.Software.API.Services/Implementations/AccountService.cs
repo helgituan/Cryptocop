@@ -27,8 +27,7 @@ namespace Cryptocop.Software.API.Services.Implementations
 
         public void Logout(int tokenId)
         {
-            //return _tokenRepository.VoidToken(tokenId);
-            throw new NotImplementedException();
+            _tokenRepository.VoidToken(tokenId);
         }
     }
 }

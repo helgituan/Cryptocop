@@ -8,9 +8,9 @@ namespace Cryptocop.Software.API.Controllers
 {
     [Route("api/payments")]
     [ApiController]
+    [Authorize]
     public class PaymentController : ControllerBase
     {
-        // TODO: Setup routes
         private readonly IPaymentService _paymentService;
         public PaymentController(IPaymentService paymentService)
         {
@@ -20,14 +20,15 @@ namespace Cryptocop.Software.API.Controllers
         [Route("")]
         public IActionResult GetStoredPaymentCards()
         {
-            throw new NotImplementedException();
+            return Ok(_paymentService.GetStoredPaymentCards(User.Identity.Name));
         }
 
         [HttpPost]
         [Route("")]
-        public IActionResult AddPaymentCard()
+        public IActionResult AddPaymentCard([FromBody] PaymentCardInputModel inputModel)
         {
-            throw new NotImplementedException();
+            _paymentService.AddPaymentCard(User.Identity.Name, inputModel);
+            return StatusCode(201);
         }
 
 

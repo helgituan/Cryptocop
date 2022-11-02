@@ -9,6 +9,7 @@ namespace Cryptocop.Software.API.Controllers
 
     [Route("api/cart")]
     [ApiController]
+    [Authorize]
     public class ShoppingCartController : ControllerBase
     {
         private readonly IShoppingCartService _shoppingCartService;
@@ -21,31 +22,30 @@ namespace Cryptocop.Software.API.Controllers
         [Route("")]
         public IActionResult GetCartItems()
         {
-            return Ok(_shoppingCartService.GetCartItems());
+            return Ok(_shoppingCartService.GetCartItems(User.Identity.Name));
         }
 
         [HttpPost]
         [Route("")]
-        public IActionResult AddCartItem([FromBody] ShoppingCartItemInputModel inputModel)
+        public async Task<IActionResult> AddCartItem([FromBody] ShoppingCartItemInputModel inputModel)
         {
-            var id = _shoppingCartService.AddCartItem(inputModel);
-            //call the external api using thye product identifier as an url parameter
-            throw new NotImplementedException();
+            await _shoppingCartService.AddCartItem(User.Identity.Name, inputModel);
+            return StatusCode(201);
         }
 
         [HttpDelete]
-        [Route("/{Id}")]
-        public IActionResult RemoveCartItem([FromBody] ShoppingCartItemInputModel inputModel)
+        [Route("{Id}")]
+        public IActionResult RemoveCartItem(int Id)
         {
-            _shoppingCartService.RemoveCartItem(inputModel);
+            _shoppingCartService.RemoveCartItem(User.Identity.Name, Id);
             return NoContent();
         }
 
         [HttpPatch]
-        [Route("/{Id}")]
-        public IActionResult UpdateCartItemQuantity([FromBody] ShoppingCartItemInputModel inputModel)
+        [Route("{Id}")]
+        public IActionResult UpdateCartItemQuantity([FromBody] ShoppingCartItemInputModel inputModel, int Id)
         {
-            _shoppingCartService.UpdateCartItemQuantity(inputModel);
+            _shoppingCartService.UpdateCartItemQuantity(User.Identity.Name, Id, inputModel.Quantity);
             return NoContent();
         }
 
@@ -53,9 +53,8 @@ namespace Cryptocop.Software.API.Controllers
         [Route("")]
         public IActionResult ClearCart()
         {
-            _shoppingCartService.ClearCart();
+            _shoppingCartService.ClearCart(User.Identity.Name);
             return NoContent();
         }
-
     }
 }
