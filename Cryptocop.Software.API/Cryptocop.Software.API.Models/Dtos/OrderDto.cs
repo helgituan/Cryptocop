@@ -18,7 +18,7 @@ namespace Cryptocop.Software.API.Models.Dtos
         public string City { get; set; }
         public string CardholderName { get; set; }
         public string CreditCard { get; set; }
-        public string OrderDate { get; set; }
+        public DateTime OrderDate { get; set; }
         public float TotalPrice { get; set; }
         public ICollection<OrderItemDto> OrderItem { get; set; }
     }

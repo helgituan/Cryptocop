@@ -15,8 +15,7 @@ namespace Cryptocop.Software.API.Repositories.Contexts
         public DbSet<ShoppingCart> ShoppingCart { get; set; }
         public DbSet<ShoppingCartItem> ShoppingCartItem { get; set; }
         public DbSet<User> User { get; set; }
-
-        public DbSet<JwtToken> JwtTokens {get;set;}
+        public DbSet<JwtToken> JwtTokens { get; set; }
 
     }
 }

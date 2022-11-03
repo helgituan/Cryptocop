@@ -1,10 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "PGLlPdEokBIJwT4GOBtgFeAOR2KBUQDdK0A8NFD6266B2sQIN1tS+2DokLGymxCSXwYv8cD4srYS+H/Sa1GGyA==",
+  "dgSpecHash": "FE0egNp8qnVWww+jhjteG8DW5I6Fl+uyPk7ope6kpgbC2E5zQZkadLXXTUwsI+AvcwDX56TWAkaycO2R7UAJMQ==",
   "success": true,
-  "projectFilePath": "/Users/petur.steinn/Skoli/HR/Vefþjónustur/T-514-VEFT/HelgiHjalp/Cryptocop/Cryptocop.Software.API/Cryptocop.Software.API.Models/Cryptocop.Software.API.Models.csproj",
+  "projectFilePath": "/Users/helgituan/Documents/Vefthjonustur/FinalAssignment/template 3/Cryptocop.Software.API/Cryptocop.Software.API.Models/Cryptocop.Software.API.Models.csproj",
   "expectedPackageFiles": [
-    "/Users/petur.steinn/.nuget/packages/newtonsoft.json/13.0.1/newtonsoft.json.13.0.1.nupkg.sha512"
+    "/Users/helgituan/.nuget/packages/newtonsoft.json/13.0.1/newtonsoft.json.13.0.1.nupkg.sha512"
   ],
   "logs": []
 }

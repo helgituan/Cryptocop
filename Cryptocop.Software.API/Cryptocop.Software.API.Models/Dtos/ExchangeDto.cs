@@ -1,13 +1,20 @@
 using System;
+using System.Text.Json.Serialization;
 namespace Cryptocop.Software.API.Models.Dtos
 {
     public class ExchangeDto
     {
-        public string Id { get; set; }
-        public string Name { get; set; }
-        public string Slug { get; set; }
-        public string AssetSymbol { get; set; }
-        public float? PriceInUSD { get; set; }
-        public DateTime? LastTrade { get; set; }
+        [JsonPropertyName("Id")]
+        public string id { get; set; }
+        [JsonPropertyName("Name")]
+        public string exchange_name { get; set; }
+        [JsonPropertyName("Slug")]
+        public string exchange_slug { get; set; }
+        [JsonPropertyName("AssetSymbol")]
+        public string base_asset_symbol { get; set; }
+        [JsonPropertyName("PriceInUsd")]
+        public float? price_usd { get; set; }
+        [JsonPropertyName("LastTrade")]
+        public DateTime? last_trade_at { get; set; }
     }
 }

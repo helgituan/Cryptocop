@@ -26,9 +26,34 @@ namespace Cryptocop.Software.API.Repositories.Implementations
         }
         public IEnumerable<OrderDto> GetOrders(string email)
         {
-            var orders = _dbContext.User.Include(o => o.Orders).Where(u => u.Email == email).Select(o => o.Orders).FirstOrDefault();
+            var orders = _dbContext.User.Include(o => o.Orders).ThenInclude(o => o.OrderItems).Where(u => u.Email == email).Select(o => o.Orders).FirstOrDefault();
 
-            return _mapper.Map<IEnumerable<OrderDto>>(orders);
+            //return _mapper.Map<IEnumerable<OrderDto>>(orders);
+            return orders.Select(o => new OrderDto
+            {
+
+                Id = o.Id,
+                Email = o.Email,
+                FullName = o.FullName,
+                StreetName = o.StreetName,
+                HouseNumber = o.HouseNumber,
+                ZipCode = o.ZipCode,
+                Country = o.Country,
+                City = o.City,
+                CardholderName = o.CardHolderName,
+                CreditCard = o.MaskedCreditCard,
+                OrderDate = o.OrderDate,
+                TotalPrice = o.TotalPrice,
+                OrderItem = o.OrderItems.Select(i => new OrderItemDto
+                {
+
+                    Id = i.Id,
+                    ProductIdentifier = i.ProductIdentifier,
+                    Quantity = i.Quantity,
+                    UnitPrice = i.UnitPrice,
+                    TotalPrice = i.TotalPrice
+                }).ToList()
+            });
 
         }
 
@@ -51,7 +76,7 @@ namespace Cryptocop.Software.API.Repositories.Implementations
 
             var userCart = _dbContext.ShoppingCart.Include(s => s.User).Include(s => s.Items).Where(s => s.User.Email == email).FirstOrDefault();
 
-            var user = _dbContext.User.Where(u => u.Email == email).FirstOrDefault();
+            var user = _dbContext.User.Include(u => u.Orders).Where(u => u.Email == email).FirstOrDefault();
 
             var cartItems = userCart.Items;
 
@@ -63,6 +88,7 @@ namespace Cryptocop.Software.API.Repositories.Implementations
                 HouseNumber = address.HouseNumber,
                 Country = address.Country,
                 City = address.City,
+                ZipCode = address.ZipCode,
                 CardHolderName = card.CardHolderName,
                 MaskedCreditCard = PaymentCardHelper.MaskPaymentCard(card.CardNumber),
                 OrderDate = DateTime.Now,
@@ -81,12 +107,36 @@ namespace Cryptocop.Software.API.Repositories.Implementations
                 //     return item;
                 // }).ToList()
             };
-            _dbContext.Order.Add(newOrder);
+            user.Orders.Add(newOrder);
             _dbContext.SaveChanges();
 
             _shoppingCartRepository.ClearCart(email);
 
-            return _mapper.Map<OrderDto>(newOrder);
+            return new OrderDto
+            {
+
+                Id = newOrder.Id,
+                Email = newOrder.Email,
+                FullName = newOrder.FullName,
+                StreetName = newOrder.StreetName,
+                HouseNumber = newOrder.HouseNumber,
+                ZipCode = newOrder.ZipCode,
+                Country = newOrder.Country,
+                City = newOrder.City,
+                CardholderName = newOrder.CardHolderName,
+                CreditCard = card.CardNumber,
+                OrderDate = newOrder.OrderDate,
+                TotalPrice = newOrder.TotalPrice,
+                OrderItem = newOrder.OrderItems.Select(i => new OrderItemDto
+                {
+
+                    Id = i.Id,
+                    ProductIdentifier = i.ProductIdentifier,
+                    Quantity = i.Quantity,
+                    UnitPrice = i.UnitPrice,
+                    TotalPrice = i.TotalPrice
+                }).ToList()
+            };
 
         }
     }
